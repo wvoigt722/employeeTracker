@@ -1,13 +1,8 @@
-const express = require("express");
 const { prompt } = require("inquirer");
-
+require("console.table");
 const queries = require("./Queries");
 
 const PORT = process.env.PORT || 3001;
-const app = express();
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 init();
 
@@ -51,6 +46,6 @@ function loadInitialQuestions() {
 
 function viewDeparments() {
   queries.viewDeparments().then(([rows, fields]) => {
-    console.log(rows);
+    console.table(rows);
   });
 }
